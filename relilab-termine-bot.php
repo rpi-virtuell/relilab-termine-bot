@@ -23,35 +23,31 @@ class RelilabTermineBot
      */
     public function __construct()
     {
-        add_action('acf_frontend/save_post', array('RelilabTermineBot', 'send_matrix_message'), 10 ,2);
+        add_action('acf_frontend/save_post', array('RelilabTermineBot', 'send_matrix_message'), 10, 2);
     }
 
     static public function send_matrix_message($form, $post_id)
     {
 
-        $url = get_option('options_relilab_termine_bot_webhook');
+        $url = get_option('options_relilab_termine_bot_webhook', true);
         $post = get_post($post_id);
-
-        BugFu::log($url);
-
-
         $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "?p=" . $post_id . "'></a>";
-        BugFu::log(array('body' => json_encode(array(
-        "text" => $message,
-        "format" => "html",
-        "displayName" => "Relilab Termin Bot",
-        "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
-    ),JSON_HEX_TAG)));
-        wp_remote_post($url, array(
+        BugFu::log(wp_remote_post($url, array(
             'headers' => array(
-                "content-type" => "application/json"
+                "Content-Type" => "application/json"
             ),
-            'body' => json_encode(array(
-                "text" => "bob",
-                "format" => "html",
-                "displayName" => "Relilab Termin Bot",
-                "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
-            ))));
+            'timeout'     => 60,
+            'redirection' => 5,
+            'blocking'    => true,
+            'httpversion' => '1.0',
+            'sslverify'   => false,
+            'data_format' => 'body',
+            'body' => json_encode([
+                'text' => $message,
+                'format' => 'html',
+                'displayName' => 'Relilab Termin Bot',
+                'avatarUrl' => 'https://i.imgur.com/pKPQ4QJ.png'
+            ]))));
     }
 
 }
