@@ -29,7 +29,7 @@ class RelilabTermineBot
     public function send_matrix_message($form, $post_id)
     {
 
-        $url = "https://webhooks.t2bot.io/api/v1/matrix/hook/GUd4CALaOyFjPF2v1XazNAzJ3GrJZE4EmZNSX5xKUuk5OflEYxFvfoqu0ErKF996";
+        $url = get_post_meta($post_id, 'relilab_termine_bot_webhook', true);
         $post = get_post($post_id);
         $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>". $post->post_title ."</b> </br> <a href='". home_url()."?p=". $post_id ."'></a>" ;
         wp_remote_post($url, array(
