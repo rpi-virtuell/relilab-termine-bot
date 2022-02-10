@@ -47,11 +47,11 @@ class RelilabTermineBot
                 "content-type" => "application/json"
             ),
             'body' => json_encode(array(
-                "text" => $message,
+                "text" => "bob",
                 "format" => "html",
                 "displayName" => "Relilab Termin Bot",
                 "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
-            ),JSON_HEX_TAG)));
+            ))));
     }
 
 }
