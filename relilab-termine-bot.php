@@ -19,7 +19,7 @@ class RelilabTermineBot
      * @since   0.1
      * @access  public
      * @uses    plugin_basename
-     * @action  rw_remote_auth_server_init
+     * @action  relilab_termine_bot
      */
     public function __construct()
     {
