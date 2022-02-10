@@ -23,10 +23,10 @@ class RelilabTermineBot
      */
     public function __construct()
     {
-        add_action('acf_frontend/save_post', array('SsoRestAuthClient', 'send_matrix_message'));
+        add_action('acf_frontend/save_post', array('RelilabTermineBot', 'send_matrix_message'));
     }
 
-    public function send_matrix_message($form, $post_id)
+    static public function send_matrix_message($form, $post_id)
     {
 
         $url = get_post_meta($post_id, 'relilab_termine_bot_webhook', true);
