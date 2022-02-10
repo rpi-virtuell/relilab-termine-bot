@@ -33,7 +33,7 @@ class RelilabTermineBot
         $post = get_post($post_id);
         $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "?p=" . $post_id . "'></a>";
 
-       wp_remote_post($url, array(
+       var_dump(wp_remote_post($url, array(
             'headers' => array(
                 "content-type" => "application/json"
             ),
@@ -42,7 +42,8 @@ class RelilabTermineBot
                 "format" => "html",
                 "displayName" => "Relilab Termin Bot",
                 "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
-            ))));
+            )))));
     }
-}
 
+}
+new RelilabTermineBot();
