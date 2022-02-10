@@ -29,23 +29,29 @@ class RelilabTermineBot
     static public function send_matrix_message($form, $post_id)
     {
 
-        $url = get_option('relilab_termine_bot_webhook');
+        $url = get_option('options_relilab_termine_bot_webhook');
         $post = get_post($post_id);
 
         BugFu::log($url);
 
 
         $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "?p=" . $post_id . "'></a>";
-       wp_remote_post($url, array(
+        BugFu::log(array('body' => json_encode(array(
+        "text" => $message,
+        "format" => "html",
+        "displayName" => "Relilab Termin Bot",
+        "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
+    ),JSON_HEX_TAG)));
+        wp_remote_post($url, array(
             'headers' => array(
                 "content-type" => "application/json"
             ),
-            'body' => wp_json_encode(array(
+            'body' => json_encode(array(
                 "text" => $message,
                 "format" => "html",
                 "displayName" => "Relilab Termin Bot",
                 "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
-            ))));
+            ),JSON_HEX_TAG)));
     }
 
 }
