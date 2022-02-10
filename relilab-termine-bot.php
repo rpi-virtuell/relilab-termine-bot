@@ -23,7 +23,7 @@ class RelilabTermineBot
      */
     public function __construct()
     {
-        add_action('acf_frontend/save_post', array('RelilabTermineBot', 'send_matrix_message'));
+        add_action('acf_frontend/save_post', array('RelilabTermineBot', 'send_matrix_message'), 10 ,2);
     }
 
     static public function send_matrix_message($form, $post_id)
@@ -33,7 +33,7 @@ class RelilabTermineBot
         $post = get_post($post_id);
         $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "?p=" . $post_id . "'></a>";
 
-       var_dump(wp_remote_post($url, array(
+       wp_remote_post($url, array(
             'headers' => array(
                 "content-type" => "application/json"
             ),
@@ -42,7 +42,7 @@ class RelilabTermineBot
                 "format" => "html",
                 "displayName" => "Relilab Termin Bot",
                 "avatarUrl" => "http://i.imgur.com/IDOBtEJ.png"
-            )))));
+            ))));
     }
 
 }
