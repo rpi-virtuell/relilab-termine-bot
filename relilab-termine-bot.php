@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:      relilab termine bot
- * Plugin URI:       https://github.com/rpi-virtuell/rw-sso-rest-auth-service
- * Description:      Authentication tool to compare Wordpress login Data with a Remote Login Server
+ * Plugin URI:       https://github.com/rpi-virtuell/relilab-termine-bot
+ * Description:      Plugin to send a notification to a chat bot webhook
  * Author:           Daniel Reintanz
  * Version:          1.0.0
  * Licence:          GPLv3
