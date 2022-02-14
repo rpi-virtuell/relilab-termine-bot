@@ -1,0 +1,16 @@
+{
+    "relilab_termine_bot": {
+        "page_title": "relilab termine bot Einstellungen",
+        "menu_slug": "relilab_termine_bot",
+        "menu_title": "relilab Termine Bot",
+        "capability": "edit_posts",
+        "position": "51",
+        "parent_slug": "options-general.php",
+        "icon_url": "",
+        "redirect": true,
+        "post_id": "options",
+        "autoload": false,
+        "update_button": "Update",
+        "updated_message": "Options Updated"
+    }
+}

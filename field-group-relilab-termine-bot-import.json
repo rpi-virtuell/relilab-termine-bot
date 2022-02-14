@@ -1,0 +1,50 @@
+[
+    {
+        "key": "group_62052b433f490",
+        "title": "Termine Matrix Bot",
+        "fields": [
+            {
+                "key": "field_62052b6308caf",
+                "label": "Termine Martix Bot Webhook Link",
+                "name": "relilab_termine_bot_webhook",
+                "type": "password",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "frontend_admin_display_mode": "edit",
+                "only_front": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "relilab_termine_bot"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "acfe_display_title": "",
+        "acfe_autosync": "",
+        "acfe_form": 0,
+        "acfe_meta": "",
+        "acfe_note": ""
+    }
+]
