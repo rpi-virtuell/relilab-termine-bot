@@ -32,22 +32,22 @@ class RelilabTermineBot
         $url = get_option('options_relilab_termine_bot_webhook', true);
         $post = get_post($post_id);
         $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "?p=" . $post_id . "'></a>";
-        BugFu::log(wp_remote_post($url, array(
+        wp_remote_post($url, array(
             'headers' => array(
                 "Content-Type" => "application/json"
             ),
-            'timeout'     => 60,
+            'timeout' => 60,
             'redirection' => 5,
-            'blocking'    => true,
+            'blocking' => true,
             'httpversion' => '1.0',
-            'sslverify'   => false,
+            'sslverify' => false,
             'data_format' => 'body',
             'body' => json_encode([
                 'text' => $message,
                 'format' => 'html',
                 'displayName' => 'Relilab Termin Bot',
                 'avatarUrl' => 'https://i.imgur.com/pKPQ4QJ.png'
-            ]))));
+            ])));
     }
 
 }
