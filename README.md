@@ -1,5 +1,5 @@
 ## relilab-termine-bot
-## Wordpress Plugin to post a link to a post created via ACF Frontend Forms
+## Wordpress Plugin to send a Webhook Trigger of a post created via ACF Frontend Forms
 ### **_Note: This plugin requires ACF Pro and Frontend in order to work_*
 
 **1. Installation**
