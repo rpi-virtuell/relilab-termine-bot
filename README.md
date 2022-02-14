@@ -14,6 +14,7 @@ In order to configure the plugin you need to import the option page and field gr
 there are two JSON files in this repo which can be imported:
 
 * **field-group-relilab-termine-bot-import.json**
+![](/assets/feldgruppen-importieren.png)
 
 Use the **Import Fieldgroup** function to import this **field-group** JSON properly
 This JSON contains the fieldgroups used to save the information which is set by the option page
@@ -42,4 +43,3 @@ _Note: Since publishing this Webhook compromises the security of the chat the bo
 
 The Plugin will engage once a Post is created via ACF Frontend Form
 _Note: This Plugin does not support Admin Approval as Post requirement_
-

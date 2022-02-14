@@ -45,8 +45,8 @@ class RelilabTermineBot
             'body' => json_encode([
                 'text' => $message,
                 'format' => 'html',
-                'displayName' => 'Relilab Termin Bot',
-                'avatarUrl' => 'https://i.imgur.com/pKPQ4QJ.png'
+                'displayName' => 'Relilab Termine Bot',
+                'avatarUrl' => plugin_dir_url( __FILE__).'assets/relilab-bot-avatar.png';
             ])));
     }
 
