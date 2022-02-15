@@ -31,7 +31,8 @@ class RelilabTermineBot
 
         $url = get_option('options_relilab_termine_bot_webhook', true);
         $post = get_post($post_id);
-        $message = "Hallo, es wurde ein neuer Termin angelegt! </br> <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "?p=" . $post_id . "'></a>";
+        $message = "Hallo, es wurde ein neuer Termin als Entwurf angelegt!</br>  <b>" . $post->post_title . "</b> </br> <a href='" . home_url() . "/wp-admin/post.php?post=" . $post_id . "&action=edit'>" . $post->post_title . " bearbeiten</a>";
+
         wp_remote_post($url, array(
             'headers' => array(
                 "Content-Type" => "application/json"
