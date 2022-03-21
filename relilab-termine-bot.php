@@ -2,9 +2,9 @@
 /**
  * Plugin Name:      relilab termine bot
  * Plugin URI:       https://github.com/rpi-virtuell/relilab-termine-bot
- * Description:      Plugin to send a notification to a chat bot webhook
+ * Description:      Plugin to send a notification to a chat bot webhook. REQUIRED PLUGINS: ACF PRO, ACF Frontend
  * Author:           Daniel Reintanz
- * Version:          1.1.0
+ * Version:          1.1.1
  * Licence:          GPLv3
  * GitHub Plugin URI: https://github.com/rpi-virtuell/relilab-termine-bot
  * GitHub Branch:     master
@@ -21,30 +21,47 @@ class RelilabTermineBot {
 	 * @action  relilab_termine_bot
 	 */
 	public function __construct() {
-		add_action( 'init', array( 'RelilabTermineBot', 'register_acf_fields' ) );
-		add_action( 'init', array( 'RelilabTermineBot', 'register_termine_bot_options_page' ) );
+		add_action( 'admin_notices', array( 'RelilabTermineBot', 'check_required_plugins' ) );
+		add_action( 'admin_menu', array( 'RelilabTermineBot', 'register_acf_fields' ) );
+		add_action( 'admin_menu', array( 'RelilabTermineBot', 'register_termine_bot_options_page' ) );
 		add_action( 'acf_frontend/save_post', array( 'RelilabTermineBot', 'send_matrix_message' ), 10, 2 );
+	}
+
+	public function check_required_plugins() {
+		if ( is_admin() && ( ! is_plugin_active( 'acf-frontend-form-element/acf-frontend.php' ) || ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) ) {
+			delete_option( 'Activated_Plugins' );
+
+			deactivate_plugins( basename( __DIR__ ) . '/' . basename( __FILE__ ) );
+			?>
+            <div class="notice notice-error is-dismissible">
+                <p>ERROR: Plugin not activated. Activate required Plugins (ACF PRO, ACF Frontend) first!</p>
+            </div>
+			<?php
+
+		}
+
 	}
 
 	public function register_termine_bot_options_page() {
 
 		if ( function_exists( 'acf_add_options_page' ) ) {
 
-			$result = acf_add_options_page( array(
-				'page_title' => 'relilab termine bot Einstellungen',
-				'menu_title' => 'relilab Termine Bot',
-				'menu_slug'  => 'relilab_termine_bot',
-				'capability' => 'edit_posts',
-				'redirect'   => true,
-				'post_id'    => 'options'
+			acf_add_options_page( array(
+				'page_title'  => 'relilab termine bot Einstellungen',
+				'menu_title'  => 'relilab Termine Bot',
+				'menu_slug'   => 'relilab_termine_bot',
+				'capability'  => 'edit_posts',
+				"position"    => "51",
+				"parent_slug" => "options-general.php",
+				'redirect'    => true,
+				'post_id'     => 'options'
 			) );
-			BugFu::log( $result );
 		}
 	}
 
 	public function register_acf_fields() {
 		if ( function_exists( 'acf_add_local_field_group' ) ) {
-			$result = acf_add_local_field_group( array(
+			acf_add_local_field_group( array(
 				'key'                   => 'group_62052b433f490',
 				'title'                 => 'Termine Matrix Bot',
 				'fields'                => array(
@@ -86,7 +103,6 @@ class RelilabTermineBot {
 				'active'                => 1,
 				'description'           => '',
 			) );
-			BugFu::log( $result );
 		}
 	}
 
