@@ -8,27 +8,7 @@ This plugin can be download or routed directly to your WP Plugin page via link
 
 ***
 
-**2. Importing Options**
-
-In order to configure the plugin you need to import the option page and field groups via the Tool section of ACF Pro in your WP Backend
-there are two JSON files in this repo which can be imported:
-
-* **field-group-relilab-termine-bot-import.json**
-![](/assets/feldgruppen-importieren.png)
-
-Use the **Import Fieldgroup** function to import this **field-group** JSON properly
-This JSON contains the fieldgroups used to save the information which is set by the option page
-
-* **option-page-relilab-termine-bot-import.json**
-
-Use the **Import Options Pages** function to import this **option-page** JSON propertly test
-This JSON contains the information used to display the option page
-
-***
-
 **3. Option Page**
-
-After importing both plugin and JSON files you should now see a new options page in your options section.
 This Plugin gives you the following options to setup
 
 * Termine Martix Bot Webhook Link
