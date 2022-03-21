@@ -4,7 +4,7 @@
  * Plugin URI:       https://github.com/rpi-virtuell/relilab-termine-bot
  * Description:      Plugin to send a notification to a chat bot webhook
  * Author:           Daniel Reintanz
- * Version:          1.0.0
+ * Version:          1.1.0
  * Licence:          GPLv3
  * GitHub Plugin URI: https://github.com/rpi-virtuell/relilab-termine-bot
  * GitHub Branch:     master
