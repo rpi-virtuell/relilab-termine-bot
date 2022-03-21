@@ -21,8 +21,8 @@ class RelilabTermineBot {
 	 * @action  relilab_termine_bot
 	 */
 	public function __construct() {
-		add_action( 'init', array( 'RelilabTermineBot', 'register_termine_bot_options_page' ) );
 		add_action( 'init', array( 'RelilabTermineBot', 'register_acf_fields' ) );
+		add_action( 'init', array( 'RelilabTermineBot', 'register_termine_bot_options_page' ) );
 		add_action( 'acf_frontend/save_post', array( 'RelilabTermineBot', 'send_matrix_message' ), 10, 2 );
 	}
 
@@ -30,7 +30,7 @@ class RelilabTermineBot {
 
 		if ( function_exists( 'acf_add_options_page' ) ) {
 
-			$option_page = acf_add_options_page( array(
+			$result = acf_add_options_page( array(
 				'page_title' => 'relilab termine bot Einstellungen',
 				'menu_title' => 'relilab Termine Bot',
 				'menu_slug'  => 'relilab_termine_bot',
@@ -38,14 +38,13 @@ class RelilabTermineBot {
 				'redirect'   => true,
 				'post_id'    => 'options'
 			) );
-
+			BugFu::log( $result );
 		}
 	}
 
 	public function register_acf_fields() {
-		if ( function_exists( 'acf_add_local_field_group' ) ):
-
-			acf_add_local_field_group( array(
+		if ( function_exists( 'acf_add_local_field_group' ) ) {
+			$result = acf_add_local_field_group( array(
 				'key'                   => 'group_62052b433f490',
 				'title'                 => 'Termine Matrix Bot',
 				'fields'                => array(
@@ -87,8 +86,8 @@ class RelilabTermineBot {
 				'active'                => 1,
 				'description'           => '',
 			) );
-
-		endif;
+			BugFu::log( $result );
+		}
 	}
 
 	static public function send_matrix_message( $form, $post_id ) {
